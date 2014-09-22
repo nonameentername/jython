@@ -198,6 +198,16 @@ public class PyFunction extends PyObject implements InvocationHandler {
         this.func_defaults = func_defaults == Py.None ? null : ((PyTuple)func_defaults).getArray();
     }
 
+    @ExposedGet(name = "__defaults__")
+    public PyObject getDefaults() {
+        return getFuncDefaults();
+    }
+
+    @ExposedSet(name = "__defaults__")
+    public void setDefaults(PyObject func_defaults) {
+        setFuncDefaults(func_defaults);
+    }
+
     @ExposedDelete(name = "func_defaults")
     public void delFuncDefaults() {
         func_defaults = null;
